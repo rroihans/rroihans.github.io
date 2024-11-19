@@ -14,12 +14,12 @@ timezone: Asia/Jakarta
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: roihan's hehe # the main title
+title: Roihan's Technical Documentation # the main title
 
-tagline: Privacy under scrutny # it will display as the subtitle
+tagline: I love computers # it will display as the subtitle
 
 description: >- # used by seo meta and the atom feed
-  A minimal, responsive and feature-rich Jekyll theme for technical writing.
+  Explore Rizki Roihan Soeharto's Technical Documentation, your ultimate guide for step-by-step tutorials on advanced technical topics. From installing ESXi and configuring vSphere Distributed Switch to mastering Check Point firewall setups, VPN configurations, and beyond, this site provides clear, practical documentation to level up your technical expertise. Perfect for IT professionals and tech enthusiasts, our well-organized, SEO-optimized content ensures easy access to valuable insights. Visit Roihan's Technical Documentation today to streamline your tech journey! Anything primarly from Check Point & VMware also more!
 
 # Fill in the protocol & hostname for your site.
 # E.g. 'https://username.github.io', note that it does not end with a '/'.
@@ -98,7 +98,7 @@ theme_mode: # [light | dark]
 cdn:
 
 # the avatar on sidebar, support local or CORS resources
-avatar:
+avatar: https://media.licdn.com/dms/image/v2/D5603AQEUXxX5uN2TCg/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1708180990935?e=1737590400&v=beta&t=MBbmmvk_SSjPlWvYG85UZbMX3qC1HUZr6vR_XfQEODo
 
 # The URL of the site-wide social preview image used in SEO `og:image` meta tag.
 # It can be overridden by a customized `page.image` in front matter.

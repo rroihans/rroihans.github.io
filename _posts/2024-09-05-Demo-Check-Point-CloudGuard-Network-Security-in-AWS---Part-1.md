@@ -2,7 +2,7 @@
 title: Demo Check Point CloudGuard Network Security in AWS Part 1
 date: 2024-11-19 22:05:12 +/-TTTT
 categories: [Tutorial, Cloud Security]
-tags: [Check Point, Amazon Web Services, CloudGuard, Smart-1 Cloud, Quantum Firewall]
+tags: [check point, amazon web services, cloudguard, smart-1 cloud, quantum firewall]
 description: CloudGuard Network Security Firewall installation in AWS
 image: 
   path: /assets/2024-09-05-Demo-Check-Point-CloudGuard-Network-Security-in-AWS---Part-1/IMG_1122-thumb.JPG

@@ -2,6 +2,7 @@
 title: Demo Check Point CloudGuard Network Security in AWS Part 1
 date: 2024-11-19 22:05:12 +/-TTTT
 categories: [GENERAL]
+image: /assets/2024-09-05-Demo-Check-Point-CloudGuard-Network-Security-in-AWS---Part-1/IMG_1122.JPG
 ---
 
 # Tentang

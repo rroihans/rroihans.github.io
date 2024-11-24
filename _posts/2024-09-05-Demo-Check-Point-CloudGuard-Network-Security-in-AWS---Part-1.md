@@ -1,5 +1,5 @@
 ---
-title: Demo Check Point CloudGuard Network Security in AWS - Part 1
+title: First Post Test
 date: 2024-11-19 22:05:12 +/-TTTT
 categories: [GENERAL]
 ---
@@ -7,19 +7,19 @@ categories: [GENERAL]
 # Tentang
 Pada #BercaTechSummit2024 kemarin saya ada kesempatan untuk mewakili Berca Booth Solution untuk Check Point, jadi disamping mempersiapkan materi saya juga siapkan demo. Solusi yang dibawakan pada booth yang kami bawakan adalah CloudGuard Network Security jadi demo yang kebayang oleh saya adalah deploy Firewall di AWS dan beberapa EC2 sebagai komputer "LAN" nya yang diproteksi oleh #CheckPoint.
 
-![IMG_1122.JPG](<IMG_1122.JPG>)
+![IMG_1122.JPG](/assets/2024-09-05-Demo-Check-Point-CloudGuard-Network-Security-in-AWS---Part-1/IMG_1122.JPG)
 
 Berca Booth Solution
 
-![IMG_0998.jpg](<IMG_0998.jpg>)
+![IMG_0998.jpg](/assets/2024-09-05-Demo-Check-Point-CloudGuard-Network-Security-in-AWS---Part-1/IMG_0998.jpg)
 
 Check Point Booth
 
-![IMG_0777.jpg](<IMG_0777.jpg>)
+![IMG_0777.jpg](/assets/2024-09-05-Demo-Check-Point-CloudGuard-Network-Security-in-AWS---Part-1/IMG_0777.jpg)
 
 # Topologi
 
-![cp-bts-aws-demo.drawio (2).png](<cp-bts-aws-demo.drawio (2).png>)
+![cp-bts-aws-demo.drawio (2).png](/assets/2024-09-05-Demo-Check-Point-CloudGuard-Network-Security-in-AWS---Part-1/cp-bts-aws-demo.drawio%20(2).png)
 
 ## Dictionary
 - CP = Check Point
@@ -38,14 +38,14 @@ Check Point Booth
 
 Masuk ke portal.checkpoint.com > Quantum > Security Management & Smart-1 Cloud
 
-![Screenshot 2024-11-22 151247.png](<Screenshot 2024-11-22 151247.png>)
+![Screenshot 2024-11-22 151247.png](/assets/2024-09-05-Demo-Check-Point-CloudGuard-Network-Security-in-AWS---Part-1/Screenshot%202024-11-22%20151247.png)
 
 - Start free trail > Start a demo
 - Connect Gateways > Create a New Gateway
 
 Gateway Name: **cp-aws-bts-demo**
 
-![Screenshot 2024-11-22 151412.png](<Screenshot 2024-11-22 151412.png>)
+![Screenshot 2024-11-22 151412.png](/assets/2024-09-05-Demo-Check-Point-CloudGuard-Network-Security-in-AWS---Part-1/Screenshot%202024-11-22%20151412.png)
 
 Copy dan simpan tokennya untuk digunakan nanti.
 
@@ -66,7 +66,7 @@ Navigasi ke VPC > Pilih **VPC and more**, dan isi:
 | Number of private subnets    | 1                   |
 | VPC Endpoints                | None                |
 
-![Screenshot 2024-11-22 152818 1.png](<Screenshot 2024-11-22 152818 1.png>)
+![Screenshot 2024-11-22 152818 1.png](/assets/2024-09-05-Demo-Check-Point-CloudGuard-Network-Security-in-AWS---Part-1/Screenshot%202024-11-22%20152818.png)
 
 ## Buat Key Pair
 
@@ -80,11 +80,11 @@ Type : **rsa**
 Untuk bisa pakai CGNS kita perlu subscribe melalui AWS Marketplace.  
 [CloudGuard Network Security with Threat Prevention & SandBlast BYOL: AWS Marketplace](https://aws.amazon.com/marketplace/pp/prodview-eqq52wje3qy5e?applicationId=AWSMPContessa&ref_=beagle&sr=0-1)
 
-![Screenshot 2024-11-22 150618.png](<Screenshot 2024-11-22 150618.png>)
+![Screenshot 2024-11-22 150618.png](/assets/2024-09-05-Demo-Check-Point-CloudGuard-Network-Security-in-AWS---Part-1/Screenshot%202024-11-22%20150618.png)
 
 Pilih **I'll do this later**.
 
-![pasted_image-1.png](<pasted_image-1.png>)
+![pasted_image-1.png](/assets/2024-09-05-Demo-Check-Point-CloudGuard-Network-Security-in-AWS---Part-1/pasted_image-1.png)
 
 ## Deploy Check Point Security Gateway
 
@@ -94,7 +94,7 @@ Linknya > [sk111013 - AWS CloudFormation Templates](https://support.checkpoint.c
 
 Lalu pilih **CloudGuard Network for AWS Single Gateway** dan klik Launch Stack
 
-![pasted-image-2.png](<pasted-image-2.png>)
+![pasted-image-2.png](/assets/2024-09-05-Demo-Check-Point-CloudGuard-Network-Security-in-AWS---Part-1/pasted-image-2.png)
 
 Pilih Stack untuk deploy dengan **existing VPC**.
 
@@ -115,20 +115,20 @@ Kemudian paramater-parameternya saya isi seperti di bawah, yang tidak saya isi m
 
 Lalu **Create Stack**. Dan pastikan seperti ini:
 
-![Screenshot 2024-10-29 104009.png](<Screenshot 2024-10-29 104009.png>)
+![Screenshot 2024-10-29 104009.png](/assets/2024-09-05-Demo-Check-Point-CloudGuard-Network-Security-in-AWS---Part-1/Screenshot%202024-10-29%20104009.png)
 
 ## Route Tables
 
 Balik ke VPC > Route tables > Edit routes:
 
-![pasted-image-3.png](<pasted-image-3.png>)
+![pasted-image-3.png](/assets/2024-09-05-Demo-Check-Point-CloudGuard-Network-Security-in-AWS---Part-1/pasted-image-3.png)
 
 - Add route
 - Destination: 0.0.0.0/0
 - Target: Network Interface  
   - Pilih Internal Network Interface dari SG
 
-![pasted-image-4.png](<pasted-image-4.png>)
+![pasted-image-4.png](/assets/2024-09-05-Demo-Check-Point-CloudGuard-Network-Security-in-AWS---Part-1/pasted-image-4.png)
 
 Terus **Save**
 

@@ -1,5 +1,5 @@
 ---
-title: First Post Test
+title: Demo Check Point CloudGuard Network Security in AWS Part 1
 date: 2024-11-19 22:05:12 +/-TTTT
 categories: [GENERAL]
 ---

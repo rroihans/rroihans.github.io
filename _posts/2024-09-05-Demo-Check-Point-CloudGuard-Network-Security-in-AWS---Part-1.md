@@ -1,41 +1,45 @@
 ---
 title: Demo Check Point CloudGuard Network Security in AWS Part 1
 date: 2024-11-19 22:05:12 +/-TTTT
-categories: [GENERAL]
-image: /assets/2024-09-05-Demo-Check-Point-CloudGuard-Network-Security-in-AWS---Part-1/IMG_1122.JPG
+categories: [Tutorial, Cloud Security]
+tags: [Check Point, Amazon Web Services, CloudGuard, Smart-1 Cloud, Quantum Firewall]
+description: CloudGuard Network Security Firewall installation in AWS
+image: 
+  path: /assets/2024-09-05-Demo-Check-Point-CloudGuard-Network-Security-in-AWS---Part-1/IMG_1122-thumb.JPG
 ---
 
-# Tentang
+## Tentang
+
 Pada #BercaTechSummit2024 kemarin saya ada kesempatan untuk mewakili Berca Booth Solution untuk Check Point, jadi disamping mempersiapkan materi saya juga siapkan demo. Solusi yang dibawakan pada booth yang kami bawakan adalah CloudGuard Network Security jadi demo yang kebayang oleh saya adalah deploy Firewall di AWS dan beberapa EC2 sebagai komputer "LAN" nya yang diproteksi oleh #CheckPoint.
 
-![IMG_1122.JPG](/assets/2024-09-05-Demo-Check-Point-CloudGuard-Network-Security-in-AWS---Part-1/IMG_1122.JPG)
+![IMG_1122.JPG](/assets/2024-09-05-Demo-Check-Point-CloudGuard-Network-Security-in-AWS---Part-1/IMG_1122.JPG)_Berca Booth Solution_
 
-Berca Booth Solution
+![IMG_0998.jpg](/assets/2024-09-05-Demo-Check-Point-CloudGuard-Network-Security-in-AWS---Part-1/IMG_0998.JPG)_Check Point Booth_
 
-![IMG_0998.jpg](/assets/2024-09-05-Demo-Check-Point-CloudGuard-Network-Security-in-AWS---Part-1/IMG_0998.jpg)
+![IMG_0777.jpg](/assets/2024-09-05-Demo-Check-Point-CloudGuard-Network-Security-in-AWS---Part-1/IMG_0777.JPG)_Technical Product Specialist_
 
-Check Point Booth
-
-![IMG_0777.jpg](/assets/2024-09-05-Demo-Check-Point-CloudGuard-Network-Security-in-AWS---Part-1/IMG_0777.jpg)
-
-# Topologi
+## Topologi
 
 ![cp-bts-aws-demo.drawio (2).png](/assets/2024-09-05-Demo-Check-Point-CloudGuard-Network-Security-in-AWS---Part-1/cp-bts-aws-demo.drawio%20(2).png)
 
 ## Dictionary
-- CP = Check Point
-- AWS = Amazon Web Services
-- CGNS = CloudGuard Network Security
-- SG = Security Gateway (Firewall)
-- SMS = Security Management Server (SMS)
-- VPC = Virtual Private Cloud
-- BTS = Berca Tech Summit
 
-# Instalasi
+| Name | Meaning                     |
+| ---- | --------------------------- |
+| AWS  | Amazon Web Services         |
+| BTS  | Berca Tech Summit           |
+| CP   | Check Point                 |
+| CGNS | CloudGuard Network Security |
+| SG   | Security Gateway (Firewall) |
+| SMS  | Security Management Server  |
+| VPC  | Virtual Private Cloud       |
 
-**Note: Jika tidak dirincikan maka field/pilihannya adalah default**
+## Instalasi
 
-## Enable Smart-1 Cloud
+> Note: Jika tidak dirincikan maka field/pilihannya adalah `default`.
+{: .prompt-info }
+
+### Enable Smart-1 Cloud
 
 Masuk ke portal.checkpoint.com > Quantum > Security Management & Smart-1 Cloud
 
@@ -50,9 +54,9 @@ Gateway Name: **cp-aws-bts-demo**
 
 Copy dan simpan tokennya untuk digunakan nanti.
 
-** Maka akan tertulis "Waiting for Connection..." gambar diatas adalah sesudah connect dengan SG. Statusnya completed.
+**Maka akan tertulis `"Waiting for Connection..."`**. Gambar diatas adalah sesudah connect dengan SG. Statusnya completed.
 
-## Buat VPC
+### Buat VPC
 
 Sebelum deploy CP SG dan komponen lainnya, kita buat VPC terlebih dahulu:
 
@@ -69,14 +73,14 @@ Navigasi ke VPC > Pilih **VPC and more**, dan isi:
 
 ![Screenshot 2024-11-22 152818 1.png](/assets/2024-09-05-Demo-Check-Point-CloudGuard-Network-Security-in-AWS---Part-1/Screenshot%202024-11-22%20152818.png)
 
-## Buat Key Pair
+### Buat Key Pair
 
 Navigasi ke EC2 > Network & Security > Key Pairs > Create Key Pair
 
 Nama : **cp-aws-bts-lab**  
 Type : **rsa**
 
-## AWS Marketplace
+### AWS Marketplace
 
 Untuk bisa pakai CGNS kita perlu subscribe melalui AWS Marketplace.  
 [CloudGuard Network Security with Threat Prevention & SandBlast BYOL: AWS Marketplace](https://aws.amazon.com/marketplace/pp/prodview-eqq52wje3qy5e?applicationId=AWSMPContessa&ref_=beagle&sr=0-1)
@@ -87,7 +91,7 @@ Pilih **I'll do this later**.
 
 ![pasted_image-1.png](/assets/2024-09-05-Demo-Check-Point-CloudGuard-Network-Security-in-AWS---Part-1/pasted_image-1.png)
 
-## Deploy Check Point Security Gateway
+### Deploy Check Point Security Gateway
 
 Untuk deploy Firewall check point di AWS adalah menggunakan CloudFormation yang sudah dibuat oleh CP.  
 
@@ -118,7 +122,7 @@ Lalu **Create Stack**. Dan pastikan seperti ini:
 
 ![Screenshot 2024-10-29 104009.png](/assets/2024-09-05-Demo-Check-Point-CloudGuard-Network-Security-in-AWS---Part-1/Screenshot%202024-10-29%20104009.png)
 
-## Route Tables
+### Route Tables
 
 Balik ke VPC > Route tables > Edit routes:
 
@@ -133,10 +137,10 @@ Balik ke VPC > Route tables > Edit routes:
 
 Terus **Save**
 
-## Connect SG to SMS
+### Connect SG to SMS
 
 Navigasi ke CP Portal > Smart-1 Cloud > Connect Gateways  
-Sekarang statusnya menjadi ==Pending Trust (SIC) Establishment==.  
+Sekarang statusnya menjadi `Pending Trust (SIC) Establishment`.  
 Navigasi ke Manage & Settings > klik **Open Streamed SmartConsole**
 
 - klik **Communication**
@@ -148,6 +152,6 @@ Navigasi ke Manage & Settings > klik **Open Streamed SmartConsole**
 
 ### Create Access and NAT Policy
 
-Navigasi ke Security Policies, ubah policy **Cleanup Rule** menjadi ==ANY-ANY-ACCEPT== dengan Logging.
+Navigasi ke Security Policies, ubah policy **Cleanup Rule** menjadi`ANY-ANY-ACCEPT` dengan Logging.
 
 Setelah itu Publish & Install dan Install policynya.
